@@ -11,7 +11,8 @@ In this lab we will learn how to teach nodes to "listen" for an event using
 
 If you haven't already, fork and clone this lab into your local environment.
 Navigate into its directory in the terminal, then run `code .` to open the files
-in Visual Studio Code.
+in Visual Studio Code. Finally, run `npm install` to install the lab's
+dependencies.
 
 ## Create Event Listeners on DOM Nodes with `addEventListener()`
 
@@ -24,19 +25,19 @@ element we want to add the listener to, and passing it two arguments:
 
 Open up `index.html` in the browser. When you click in the `<input>` area,
 nothing happens. Let's set up some _event handling_. Specifically, let's add an
-event listener for the `click` event on the `input#button` element in
+event listener for the `click` event on the `input#input` element in
 `index.html`.
 
 Try out the following in the Chrome DevTools console:
 
 ```js
-const input = document.getElementById('button');
+const input = document.getElementById('input');
 input.addEventListener('click', function() {
   alert('I was clicked!');
 });
 ```
 
-Now when you click inside of `input#button`, you will get an alert box.
+Now when you click inside of `input#input`, you will get an alert box.
 
 Let's review what's happening in this code.
 
@@ -50,9 +51,7 @@ be executed when the event is "heard."
 
 [According to MDN][callback]:
 
-> A callback function is a function passed into another function as an argument,
-> which is then invoked inside the outer function to complete some kind of
-> routine or action.
+> A callback function is a function passed into another function as an argument, which is then invoked inside the outer function to complete some kind of routine or action.
 
 That's exactly what's happening here: we're passing a callback function as the
 second argument to the `addEventListener()` function; the callback will be
@@ -82,7 +81,7 @@ listeners. With this approach, we would pass the _function name_ as the second
 argument to `addEventListener()` rather than the function itself:
 
 ```js
-const input = document.getElementById('button');
+const input = document.getElementById('input');
 
 function clickAlert() {
   alert('I was clicked!');
@@ -91,7 +90,7 @@ function clickAlert() {
 input.addEventListener('click', clickAlert);
 ```
 
-We could then attach our `clickAlert` to as many elements as we'd like. Just as
+We could then hook up as many elements as we'd like to our `clickAlert`. Just as
 we did for the `input` element, we would first use our CSS selector skills to
 grab the desired element and save it to a variable, then add the `click` event
 listener to that element. Give it a try!
@@ -118,7 +117,7 @@ To do that, simply copy the code into the `index.js` file's
 the test — just make sure that the code creating the event listener is **inside**
 the `addingEventListener()` function.
 
-### Checking the Code in the Browser
+#### Checking the Code in the Browser
 
 We know that the code works in the console and passes the test, but we should
 also check our changes to `index.js` in the browser. Because you've added the
@@ -126,6 +125,22 @@ also check our changes to `index.js` in the browser. Because you've added the
 recall that you will need to call the outer function in `index.js` to execute
 `addEventListener()` and activate the event listener. Be sure to refresh the
 page to load the new code in `index.js`.
+
+## Saving Your Work Remotely
+
+Currently, the work you've done on this assignment is only on your local
+machine. To preserve your solution on your GitHub fork, you will need to stage the
+changes you've made, commit them, and push the commit up to GitHub. Use
+the following commands to do this:
+
+```sh
+git add .
+git commit -m "Completed assignment"
+git push
+```
+
+If you visit your fork on GitHub, you should now see that _you've_ made the most
+recent commit, and your code will be present in the files.
 
 ## Resources
 
